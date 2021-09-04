@@ -1,0 +1,2318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_132062_workbyclockModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookingPayments">
+          <Key>
+            <PropertyRef Name="BookingPaymentId" />
+          </Key>
+          <Property Name="BookingPaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingId" Type="int" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="int" Nullable="false" />
+          <Property Name="PaymentAmount" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="PaymentAcceptedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="BookingTypes">
+          <Key>
+            <PropertyRef Name="BookingTypeId" />
+          </Key>
+          <Property Name="BookingTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingTypeName" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="BookingTypeDesc" Type="varchar" MaxLength="45" />
+          <Property Name="IsTaxable" Type="bit" Nullable="false" />
+          <Property Name="TaxInfoId" Type="int" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyDescription" Type="varchar" MaxLength="500" />
+          <Property Name="CompanyPhone" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyEmail" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyWebsite" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyAddress1" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyCity" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyState" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyZip" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyCountry" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyLogo" Type="varbinary(max)" />
+          <Property Name="CompanyAdminId" Type="nvarchar" MaxLength="128" />
+          <Property Name="CompanyNumberOfUsers" Type="int" Nullable="false" />
+          <Property Name="CompanyNumberOfLocation" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyLocation">
+          <Key>
+            <PropertyRef Name="CompanyLocationId" />
+          </Key>
+          <Property Name="CompanyLocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyUser">
+          <Key>
+            <PropertyRef Name="CompanyUserId" />
+          </Key>
+          <Property Name="CompanyUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="DeviceId" />
+          </Key>
+          <Property Name="DeviceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="DeviceCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DeviceDescription" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IsUsed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeePin" Type="int" Nullable="false" />
+          <Property Name="EmployeeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeEmail" Type="varchar" MaxLength="100" />
+          <Property Name="EmployeePhone" Type="varchar" MaxLength="100" />
+          <Property Name="EmployeeLastFour" Type="int" />
+          <Property Name="EmployeeEmploymentTypeId" Type="int" />
+          <Property Name="EmployeeIsHourly" Type="bit" />
+          <Property Name="EmployeeRate" Type="real" />
+          <Property Name="EmployeeBirthDate" Type="datetime" />
+          <Property Name="EmployeeHireDate" Type="datetime" />
+          <Property Name="EmployeeLeftDate" Type="datetime" />
+          <Property Name="EmployeeAddress1" Type="varchar" MaxLength="100" />
+          <Property Name="EmployeeAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="EmployeeCity" Type="varchar" MaxLength="100" />
+          <Property Name="EmployeeState" Type="varchar" MaxLength="100" />
+          <Property Name="EmployeeZip" Type="varchar" MaxLength="100" />
+          <Property Name="EmployeeCountry" Type="varchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeLocation">
+          <Key>
+            <PropertyRef Name="EmployeeLocationId" />
+          </Key>
+          <Property Name="EmployeeLocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeTimeCard">
+          <Key>
+            <PropertyRef Name="EmployeeTimeCardId" />
+          </Key>
+          <Property Name="EmployeeTimeCardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="LocationIp" Type="varchar" MaxLength="20" />
+          <Property Name="TimeIn" Type="datetime" />
+          <Property Name="TimeOut" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="DeviceCode" Type="varchar" MaxLength="50" />
+          <Property Name="TimeInUtc" Type="datetime" />
+          <Property Name="TimeOutUtc" Type="datetime" />
+          <Property Name="DeviceCodeOut" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmployeeTimeCardHistory">
+          <Key>
+            <PropertyRef Name="EmployeeTimeCardHistoryId" />
+          </Key>
+          <Property Name="EmployeeTimeCardHistoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeTimeCardId" Type="int" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="LocationIp" Type="varchar" MaxLength="20" />
+          <Property Name="TimeIn" Type="datetime" />
+          <Property Name="TimeOut" Type="datetime" />
+          <Property Name="TimeCardCreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="DeviceCode" Type="varchar" MaxLength="50" />
+          <Property Name="TimeInUtc" Type="datetime" />
+          <Property Name="TimeOutUtc" Type="datetime" />
+          <Property Name="DeviceCodeOut" Type="varchar" MaxLength="50" />
+          <Property Name="Reason" Type="varchar" MaxLength="100" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="128" />
+          <Property Name="Action" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="EmploymentType">
+          <Key>
+            <PropertyRef Name="EmploymentTypeId" />
+          </Key>
+          <Property Name="EmploymentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmploymentTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guests">
+          <Key>
+            <PropertyRef Name="GuestId" />
+          </Key>
+          <Property Name="GuestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GuestFullName" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="GuestPhone" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="GuestEmail" Type="varchar" MaxLength="45" />
+          <Property Name="IsDNR" Type="bit" Nullable="false" />
+          <Property Name="GuestAddress" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="GuestDriverLicenseId" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="CompanyId" Type="int" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LocationDescription" Type="varchar" MaxLength="500" />
+          <Property Name="LocationPhone" Type="varchar" MaxLength="50" />
+          <Property Name="LocationEmail" Type="varchar" MaxLength="100" />
+          <Property Name="LocationAddress1" Type="varchar" MaxLength="100" />
+          <Property Name="LocationAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="LocationCity" Type="varchar" MaxLength="100" />
+          <Property Name="LocationState" Type="varchar" MaxLength="100" />
+          <Property Name="LocationZip" Type="varchar" MaxLength="100" />
+          <Property Name="LocationCountry" Type="varchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="LocationNumberOfDevice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentTypes">
+          <Key>
+            <PropertyRef Name="PaymentTypeId" />
+          </Key>
+          <Property Name="PaymentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentTypeName" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="PaymentTypeDesc" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleDescription" Type="varchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomBookings">
+          <Key>
+            <PropertyRef Name="RoomBookingId" />
+          </Key>
+          <Property Name="RoomBookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomId" Type="int" Nullable="false" />
+          <Property Name="GuestId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="FromDate" Type="datetime2" Precision="0" />
+          <Property Name="ToDate" Type="datetime2" Precision="0" />
+          <Property Name="BookingTypeId" Type="int" Nullable="false" />
+          <Property Name="BookingDate" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="RoomBookingStatusId" Type="int" />
+        </EntityType>
+        <EntityType Name="RoomBookingStatusMaster">
+          <Key>
+            <PropertyRef Name="RoomBookingStatusId" />
+          </Key>
+          <Property Name="RoomBookingStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomBookingStatusName" Type="varchar" MaxLength="50" />
+          <Property Name="RoomBookingStatusDesc" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Rooms">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomName" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="RoomDesc" Type="varchar" MaxLength="45" />
+          <Property Name="RoomBeds" Type="int" Nullable="false" />
+          <Property Name="RoomPrice" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="RoomStatusId" Type="int" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+          <Property Name="Locationid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomStatusMaster">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="StatusDesc" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="StateAbv" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="TaxInfo">
+          <Key>
+            <PropertyRef Name="TaxInfoId" />
+          </Key>
+          <Property Name="TaxInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxInfoName" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="TaxAmount" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="IsPercentage" Type="bit" Nullable="false" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="LocatioId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserAspNetId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserFullName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPhone" Type="varchar" MaxLength="100" />
+          <Property Name="UserAddress1" Type="varchar" MaxLength="100" />
+          <Property Name="UserAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="UserCity" Type="varchar" MaxLength="100" />
+          <Property Name="UserState" Type="varchar" MaxLength="100" />
+          <Property Name="UserZip" Type="varchar" MaxLength="100" />
+          <Property Name="UserCountry" Type="varchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInRoles">
+          <Key>
+            <PropertyRef Name="UserInRoleId" />
+          </Key>
+          <Property Name="UserInRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BookingPayments_PaymentTypes">
+          <End Role="PaymentTypes" Type="Self.PaymentTypes" Multiplicity="1" />
+          <End Role="BookingPayments" Type="Self.BookingPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTypes">
+              <PropertyRef Name="PaymentTypeId" />
+            </Principal>
+            <Dependent Role="BookingPayments">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingPayments_RoomBookings">
+          <End Role="RoomBookings" Type="Self.RoomBookings" Multiplicity="1" />
+          <End Role="BookingPayments" Type="Self.BookingPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomBookings">
+              <PropertyRef Name="RoomBookingId" />
+            </Principal>
+            <Dependent Role="BookingPayments">
+              <PropertyRef Name="BookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTypes_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="BookingTypes" Type="Self.BookingTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="BookingTypes">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTypes_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="BookingTypes" Type="Self.BookingTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="BookingTypes">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTypes_TaxInfo">
+          <End Role="TaxInfo" Type="Self.TaxInfo" Multiplicity="0..1" />
+          <End Role="BookingTypes" Type="Self.BookingTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxInfo">
+              <PropertyRef Name="TaxInfoId" />
+            </Principal>
+            <Dependent Role="BookingTypes">
+              <PropertyRef Name="TaxInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyLocation_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyLocation" Type="Self.CompanyLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CompanyLocation">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyLocation_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="CompanyLocation" Type="Self.CompanyLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="CompanyLocation">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyUser_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="CompanyUser" Type="Self.CompanyUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyUser_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyUser" Type="Self.CompanyUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CompanyUser">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Device_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_EmploymentType">
+          <End Role="EmploymentType" Type="Self.EmploymentType" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmploymentType">
+              <PropertyRef Name="EmploymentTypeId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeeEmploymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeLocation_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeLocation" Type="Self.EmployeeLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="EmployeeLocation">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeLocation_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="EmployeeLocation" Type="Self.EmployeeLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="EmployeeLocation">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeTimeCard_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeTimeCard" Type="Self.EmployeeTimeCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="EmployeeTimeCard">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeTimeCard_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="EmployeeTimeCard" Type="Self.EmployeeTimeCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="EmployeeTimeCard">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guests_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Guests" Type="Self.Guests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Guests">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomBookings_BookingTypes">
+          <End Role="BookingTypes" Type="Self.BookingTypes" Multiplicity="1" />
+          <End Role="RoomBookings" Type="Self.RoomBookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookingTypes">
+              <PropertyRef Name="BookingTypeId" />
+            </Principal>
+            <Dependent Role="RoomBookings">
+              <PropertyRef Name="BookingTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomBookings_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="RoomBookings" Type="Self.RoomBookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="RoomBookings">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomBookings_Guests">
+          <End Role="Guests" Type="Self.Guests" Multiplicity="1" />
+          <End Role="RoomBookings" Type="Self.RoomBookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guests">
+              <PropertyRef Name="GuestId" />
+            </Principal>
+            <Dependent Role="RoomBookings">
+              <PropertyRef Name="GuestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomBookings_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="RoomBookings" Type="Self.RoomBookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="RoomBookings">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomBookings_RoomBookingStatusMaster">
+          <End Role="RoomBookingStatusMaster" Type="Self.RoomBookingStatusMaster" Multiplicity="0..1" />
+          <End Role="RoomBookings" Type="Self.RoomBookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomBookingStatusMaster">
+              <PropertyRef Name="RoomBookingStatusId" />
+            </Principal>
+            <Dependent Role="RoomBookings">
+              <PropertyRef Name="RoomBookingStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomBookings_Rooms">
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="1" />
+          <End Role="RoomBookings" Type="Self.RoomBookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rooms">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="RoomBookings">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="Locationid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_RoomStatusMaster">
+          <End Role="RoomStatusMaster" Type="Self.RoomStatusMaster" Multiplicity="1" />
+          <End Role="Rooms" Type="Self.Rooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomStatusMaster">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Rooms">
+              <PropertyRef Name="RoomStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaxInfo_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="TaxInfo" Type="Self.TaxInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="TaxInfo">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaxInfo_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="TaxInfo" Type="Self.TaxInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="TaxInfo">
+              <PropertyRef Name="LocatioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserAspNetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInRoles_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="UserInRoles" Type="Self.UserInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInRoles_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserInRoles" Type="Self.UserInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_132062_workbyclockModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookingPayments" EntityType="Self.BookingPayments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookingTypes" EntityType="Self.BookingTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyLocation" EntityType="Self.CompanyLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyUser" EntityType="Self.CompanyUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Device" EntityType="Self.Device" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeLocation" EntityType="Self.EmployeeLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeTimeCard" EntityType="Self.EmployeeTimeCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeTimeCardHistory" EntityType="Self.EmployeeTimeCardHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmploymentType" EntityType="Self.EmploymentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guests" EntityType="Self.Guests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomBookings" EntityType="Self.RoomBookings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomBookingStatusMaster" EntityType="Self.RoomBookingStatusMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rooms" EntityType="Self.Rooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomStatusMaster" EntityType="Self.RoomStatusMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaxInfo" EntityType="Self.TaxInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInRoles" EntityType="Self.UserInRoles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BookingPayments_PaymentTypes" Association="Self.FK_BookingPayments_PaymentTypes">
+            <End Role="PaymentTypes" EntitySet="PaymentTypes" />
+            <End Role="BookingPayments" EntitySet="BookingPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingPayments_RoomBookings" Association="Self.FK_BookingPayments_RoomBookings">
+            <End Role="RoomBookings" EntitySet="RoomBookings" />
+            <End Role="BookingPayments" EntitySet="BookingPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTypes_Company" Association="Self.FK_BookingTypes_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="BookingTypes" EntitySet="BookingTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTypes_Location" Association="Self.FK_BookingTypes_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="BookingTypes" EntitySet="BookingTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTypes_TaxInfo" Association="Self.FK_BookingTypes_TaxInfo">
+            <End Role="TaxInfo" EntitySet="TaxInfo" />
+            <End Role="BookingTypes" EntitySet="BookingTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyLocation_Company" Association="Self.FK_CompanyLocation_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyLocation" EntitySet="CompanyLocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyLocation_Location" Association="Self.FK_CompanyLocation_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="CompanyLocation" EntitySet="CompanyLocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyUser_AspNetUsers" Association="Self.FK_CompanyUser_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CompanyUser" EntitySet="CompanyUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyUser_Company" Association="Self.FK_CompanyUser_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyUser" EntitySet="CompanyUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Device_Location" Association="Self.FK_Device_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_EmploymentType" Association="Self.FK_Employee_EmploymentType">
+            <End Role="EmploymentType" EntitySet="EmploymentType" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeLocation_Employee" Association="Self.FK_EmployeeLocation_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeLocation" EntitySet="EmployeeLocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeLocation_Location" Association="Self.FK_EmployeeLocation_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="EmployeeLocation" EntitySet="EmployeeLocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeTimeCard_Employee" Association="Self.FK_EmployeeTimeCard_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeTimeCard" EntitySet="EmployeeTimeCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeTimeCard_Location" Association="Self.FK_EmployeeTimeCard_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="EmployeeTimeCard" EntitySet="EmployeeTimeCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guests_Company" Association="Self.FK_Guests_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Guests" EntitySet="Guests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomBookings_BookingTypes" Association="Self.FK_RoomBookings_BookingTypes">
+            <End Role="BookingTypes" EntitySet="BookingTypes" />
+            <End Role="RoomBookings" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomBookings_Company" Association="Self.FK_RoomBookings_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="RoomBookings" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomBookings_Guests" Association="Self.FK_RoomBookings_Guests">
+            <End Role="Guests" EntitySet="Guests" />
+            <End Role="RoomBookings" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomBookings_Location" Association="Self.FK_RoomBookings_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="RoomBookings" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomBookings_RoomBookingStatusMaster" Association="Self.FK_RoomBookings_RoomBookingStatusMaster">
+            <End Role="RoomBookingStatusMaster" EntitySet="RoomBookingStatusMaster" />
+            <End Role="RoomBookings" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomBookings_Rooms" Association="Self.FK_RoomBookings_Rooms">
+            <End Role="Rooms" EntitySet="Rooms" />
+            <End Role="RoomBookings" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_Company" Association="Self.FK_Rooms_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_Location" Association="Self.FK_Rooms_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_RoomStatusMaster" Association="Self.FK_Rooms_RoomStatusMaster">
+            <End Role="RoomStatusMaster" EntitySet="RoomStatusMaster" />
+            <End Role="Rooms" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaxInfo_Company" Association="Self.FK_TaxInfo_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="TaxInfo" EntitySet="TaxInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaxInfo_Location" Association="Self.FK_TaxInfo_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="TaxInfo" EntitySet="TaxInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_AspNetUsers" Association="Self.FK_User_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInRoles_AspNetUsers" Association="Self.FK_UserInRoles_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserInRoles" EntitySet="UserInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInRoles_Roles" Association="Self.FK_UserInRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserInRoles" EntitySet="UserInRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_132062_workbyclockModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="CompanyUsers" Relationship="Self.FK_CompanyUser_AspNetUsers" FromRole="AspNetUsers" ToRole="CompanyUser" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_AspNetUsers" FromRole="AspNetUsers" ToRole="User" />
+          <NavigationProperty Name="UserInRoles" Relationship="Self.FK_UserInRoles_AspNetUsers" FromRole="AspNetUsers" ToRole="UserInRoles" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyWebsite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyZip" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyLogo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CompanyAdminId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyNumberOfUsers" Type="Int32" Nullable="false" />
+          <Property Name="CompanyNumberOfLocation" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CompanyLocations" Relationship="Self.FK_CompanyLocation_Company" FromRole="Company" ToRole="CompanyLocation" />
+          <NavigationProperty Name="CompanyUsers" Relationship="Self.FK_CompanyUser_Company" FromRole="Company" ToRole="CompanyUser" />
+          <NavigationProperty Name="BookingTypes" Relationship="DB_132062_workbyclockModel.FK_BookingTypes_Company" FromRole="Company" ToRole="BookingType" />
+          <NavigationProperty Name="RoomBookings" Relationship="DB_132062_workbyclockModel.FK_RoomBookings_Company" FromRole="Company" ToRole="RoomBooking" />
+          <NavigationProperty Name="Rooms" Relationship="DB_132062_workbyclockModel.FK_Rooms_Company" FromRole="Company" ToRole="Room" />
+          <NavigationProperty Name="TaxInfoes" Relationship="DB_132062_workbyclockModel.FK_TaxInfo_Company" FromRole="Company" ToRole="TaxInfo" />
+          <NavigationProperty Name="Guests" Relationship="DB_132062_workbyclockModel.FK_Guests_Company" FromRole="Company" ToRole="Guest" />
+        </EntityType>
+        <EntityType Name="CompanyLocation">
+          <Key>
+            <PropertyRef Name="CompanyLocationId" />
+          </Key>
+          <Property Name="CompanyLocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanyLocation_Company" FromRole="CompanyLocation" ToRole="Company" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_CompanyLocation_Location" FromRole="CompanyLocation" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="CompanyUser">
+          <Key>
+            <PropertyRef Name="CompanyUserId" />
+          </Key>
+          <Property Name="CompanyUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_CompanyUser_AspNetUsers" FromRole="CompanyUser" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanyUser_Company" FromRole="CompanyUser" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+          </Key>
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeePin" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeePhone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeLastFour" Type="Int32" />
+          <Property Name="EmployeeEmploymentTypeId" Type="Int32" />
+          <Property Name="EmployeeIsHourly" Type="Boolean" />
+          <Property Name="EmployeeRate" Type="Single" />
+          <Property Name="EmployeeBirthDate" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeHireDate" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeLeftDate" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeZip" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EmploymentType" Relationship="Self.FK_Employee_EmploymentType" FromRole="Employee" ToRole="EmploymentType" />
+          <NavigationProperty Name="EmployeeLocations" Relationship="Self.FK_EmployeeLocation_Employee" FromRole="Employee" ToRole="EmployeeLocation" />
+          <NavigationProperty Name="EmployeeTimeCards" Relationship="Self.FK_EmployeeTimeCard_Employee" FromRole="Employee" ToRole="EmployeeTimeCard" />
+        </EntityType>
+        <EntityType Name="EmployeeLocation">
+          <Key>
+            <PropertyRef Name="EmployeeLocationId" />
+          </Key>
+          <Property Name="EmployeeLocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_EmployeeLocation_Employee" FromRole="EmployeeLocation" ToRole="Employee" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_EmployeeLocation_Location" FromRole="EmployeeLocation" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="EmployeeTimeCard">
+          <Key>
+            <PropertyRef Name="EmployeeTimeCardId" />
+          </Key>
+          <Property Name="EmployeeTimeCardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="LocationIp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TimeIn" Type="DateTime" Precision="3" />
+          <Property Name="TimeOut" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_EmployeeTimeCard_Employee" FromRole="EmployeeTimeCard" ToRole="Employee" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_EmployeeTimeCard_Location" FromRole="EmployeeTimeCard" ToRole="Location" />
+          <Property Name="DeviceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TimeInUtc" Type="DateTime" Precision="3" />
+          <Property Name="TimeOutUtc" Type="DateTime" Precision="3" />
+          <Property Name="DeviceCodeOut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EmploymentType">
+          <Key>
+            <PropertyRef Name="EmploymentTypeId" />
+          </Key>
+          <Property Name="EmploymentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmploymentTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_EmploymentType" FromRole="EmploymentType" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LocationDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LocationPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LocationEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocationAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocationAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocationCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocationState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocationZip" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocationCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CompanyLocations" Relationship="Self.FK_CompanyLocation_Location" FromRole="Location" ToRole="CompanyLocation" />
+          <NavigationProperty Name="EmployeeLocations" Relationship="Self.FK_EmployeeLocation_Location" FromRole="Location" ToRole="EmployeeLocation" />
+          <NavigationProperty Name="EmployeeTimeCards" Relationship="Self.FK_EmployeeTimeCard_Location" FromRole="Location" ToRole="EmployeeTimeCard" />
+          <Property Name="LocationNumberOfDevice" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Devices" Relationship="DB_132062_workbyclockModel.FK_Device_Location" FromRole="Location" ToRole="Device" />
+          <NavigationProperty Name="BookingTypes" Relationship="DB_132062_workbyclockModel.FK_BookingTypes_Location" FromRole="Location" ToRole="BookingType" />
+          <NavigationProperty Name="RoomBookings" Relationship="DB_132062_workbyclockModel.FK_RoomBookings_Location" FromRole="Location" ToRole="RoomBooking" />
+          <NavigationProperty Name="Rooms" Relationship="DB_132062_workbyclockModel.FK_Rooms_Location" FromRole="Location" ToRole="Room" />
+          <NavigationProperty Name="TaxInfoes" Relationship="DB_132062_workbyclockModel.FK_TaxInfo_Location" FromRole="Location" ToRole="TaxInfo" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserInRoles" Relationship="Self.FK_UserInRoles_Roles" FromRole="Roles" ToRole="UserInRoles" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="StateAbv" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserAspNetId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserFullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserZip" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_User_AspNetUsers" FromRole="User" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="UserInRole">
+          <Key>
+            <PropertyRef Name="UserInRoleId" />
+          </Key>
+          <Property Name="UserInRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_UserInRoles_AspNetUsers" FromRole="UserInRoles" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_UserInRoles_Roles" FromRole="UserInRoles" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyUser_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="CompanyUser" Type="Self.CompanyUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserAspNetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInRoles_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="UserInRoles" Type="Self.UserInRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyLocation_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyLocation" Type="Self.CompanyLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CompanyLocation">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyUser_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyUser" Type="Self.CompanyUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="CompanyUser">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyLocation_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="CompanyLocation" Type="Self.CompanyLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="CompanyLocation">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_EmploymentType">
+          <End Role="EmploymentType" Type="Self.EmploymentType" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmploymentType">
+              <PropertyRef Name="EmploymentTypeId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeeEmploymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeLocation_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeLocation" Type="Self.EmployeeLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="EmployeeLocation">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeTimeCard_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeTimeCard" Type="Self.EmployeeTimeCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="EmployeeTimeCard">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeLocation_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="EmployeeLocation" Type="Self.EmployeeLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="EmployeeLocation">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeTimeCard_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="EmployeeTimeCard" Type="Self.EmployeeTimeCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="EmployeeTimeCard">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInRoles_Roles">
+          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserInRoles" Type="Self.UserInRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DB_132062_workbyclockEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="CompanyLocations" EntityType="Self.CompanyLocation" />
+          <EntitySet Name="CompanyUsers" EntityType="Self.CompanyUser" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="EmployeeLocations" EntityType="Self.EmployeeLocation" />
+          <EntitySet Name="EmployeeTimeCards" EntityType="Self.EmployeeTimeCard" />
+          <EntitySet Name="EmploymentTypes" EntityType="Self.EmploymentType" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserInRoles" EntityType="Self.UserInRole" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyUser_AspNetUsers" Association="Self.FK_CompanyUser_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CompanyUser" EntitySet="CompanyUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_AspNetUsers" Association="Self.FK_User_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInRoles_AspNetUsers" Association="Self.FK_UserInRoles_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="UserInRoles" EntitySet="UserInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyLocation_Company" Association="Self.FK_CompanyLocation_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="CompanyLocation" EntitySet="CompanyLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyUser_Company" Association="Self.FK_CompanyUser_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="CompanyUser" EntitySet="CompanyUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyLocation_Location" Association="Self.FK_CompanyLocation_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="CompanyLocation" EntitySet="CompanyLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_EmploymentType" Association="Self.FK_Employee_EmploymentType">
+            <End Role="EmploymentType" EntitySet="EmploymentTypes" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeLocation_Employee" Association="Self.FK_EmployeeLocation_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="EmployeeLocation" EntitySet="EmployeeLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeTimeCard_Employee" Association="Self.FK_EmployeeTimeCard_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="EmployeeTimeCard" EntitySet="EmployeeTimeCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeLocation_Location" Association="Self.FK_EmployeeLocation_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="EmployeeLocation" EntitySet="EmployeeLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeTimeCard_Location" Association="Self.FK_EmployeeTimeCard_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="EmployeeTimeCard" EntitySet="EmployeeTimeCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInRoles_Roles" Association="Self.FK_UserInRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserInRoles" EntitySet="UserInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Devices" EntityType="DB_132062_workbyclockModel.Device" />
+          <AssociationSet Name="FK_Device_Location" Association="DB_132062_workbyclockModel.FK_Device_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Device" EntitySet="Devices" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeTimeCardHistories" EntityType="DB_132062_workbyclockModel.EmployeeTimeCardHistory" />
+          <EntitySet Name="BookingPayments" EntityType="DB_132062_workbyclockModel.BookingPayment" />
+          <EntitySet Name="BookingTypes" EntityType="DB_132062_workbyclockModel.BookingType" />
+          <EntitySet Name="PaymentTypes" EntityType="DB_132062_workbyclockModel.PaymentType" />
+          <EntitySet Name="RoomBookings" EntityType="DB_132062_workbyclockModel.RoomBooking" />
+          <EntitySet Name="Rooms" EntityType="DB_132062_workbyclockModel.Room" />
+          <EntitySet Name="RoomStatusMasters" EntityType="DB_132062_workbyclockModel.RoomStatusMaster" />
+          <EntitySet Name="TaxInfoes" EntityType="DB_132062_workbyclockModel.TaxInfo" />
+          <AssociationSet Name="FK_BookingTypes_Company" Association="DB_132062_workbyclockModel.FK_BookingTypes_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="BookingType" EntitySet="BookingTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTypes_Location" Association="DB_132062_workbyclockModel.FK_BookingTypes_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="BookingType" EntitySet="BookingTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingTypes_TaxInfo" Association="DB_132062_workbyclockModel.FK_BookingTypes_TaxInfo">
+            <End Role="TaxInfo" EntitySet="TaxInfoes" />
+            <End Role="BookingType" EntitySet="BookingTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomBookings_BookingTypes" Association="DB_132062_workbyclockModel.FK_RoomBookings_BookingTypes">
+            <End Role="BookingType" EntitySet="BookingTypes" />
+            <End Role="RoomBooking" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomBookings_Company" Association="DB_132062_workbyclockModel.FK_RoomBookings_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="RoomBooking" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_Company" Association="DB_132062_workbyclockModel.FK_Rooms_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Room" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaxInfo_Company" Association="DB_132062_workbyclockModel.FK_TaxInfo_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="TaxInfo" EntitySet="TaxInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomBookings_Location" Association="DB_132062_workbyclockModel.FK_RoomBookings_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="RoomBooking" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_Location" Association="DB_132062_workbyclockModel.FK_Rooms_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Room" EntitySet="Rooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaxInfo_Location" Association="DB_132062_workbyclockModel.FK_TaxInfo_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="TaxInfo" EntitySet="TaxInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomBookings_Rooms" Association="DB_132062_workbyclockModel.FK_RoomBookings_Rooms">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="RoomBooking" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_RoomStatusMaster" Association="DB_132062_workbyclockModel.FK_Rooms_RoomStatusMaster">
+            <End Role="RoomStatusMaster" EntitySet="RoomStatusMasters" />
+            <End Role="Room" EntitySet="Rooms" />
+          </AssociationSet>
+          <EntitySet Name="Guests" EntityType="DB_132062_workbyclockModel.Guest" />
+          <AssociationSet Name="FK_Guests_Company" Association="DB_132062_workbyclockModel.FK_Guests_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Guest" EntitySet="Guests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomBookings_Guests" Association="DB_132062_workbyclockModel.FK_RoomBookings_Guests">
+            <End Role="Guest" EntitySet="Guests" />
+            <End Role="RoomBooking" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <EntitySet Name="RoomBookingStatusMasters" EntityType="DB_132062_workbyclockModel.RoomBookingStatusMaster" />
+          <AssociationSet Name="FK_RoomBookings_RoomBookingStatusMaster" Association="DB_132062_workbyclockModel.FK_RoomBookings_RoomBookingStatusMaster">
+            <End Role="RoomBookingStatusMaster" EntitySet="RoomBookingStatusMasters" />
+            <End Role="RoomBooking" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingPayments_PaymentTypes" Association="DB_132062_workbyclockModel.FK_BookingPayments_PaymentTypes">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="BookingPayment" EntitySet="BookingPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingPayments_RoomBookings" Association="DB_132062_workbyclockModel.FK_BookingPayments_RoomBookings">
+            <End Role="RoomBooking" EntitySet="RoomBookings" />
+            <End Role="BookingPayment" EntitySet="BookingPayments" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="DeviceId" />
+          </Key>
+          <Property Name="DeviceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="DeviceCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="DB_132062_workbyclockModel.FK_Device_Location" FromRole="Device" ToRole="Location" />
+          <Property Name="IsUsed" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Device_Location">
+          <End Type="DB_132062_workbyclockModel.Location" Role="Location" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.Device" Role="Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EmployeeTimeCardHistory">
+          <Key>
+            <PropertyRef Name="EmployeeTimeCardHistoryId" />
+          </Key>
+          <Property Name="EmployeeTimeCardHistoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeTimeCardId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <Property Name="LocationIp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TimeIn" Type="DateTime" Precision="3" />
+          <Property Name="TimeOut" Type="DateTime" Precision="3" />
+          <Property Name="TimeCardCreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeviceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TimeInUtc" Type="DateTime" Precision="3" />
+          <Property Name="TimeOutUtc" Type="DateTime" Precision="3" />
+          <Property Name="DeviceCodeOut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BookingPayment">
+          <Key>
+            <PropertyRef Name="BookingPaymentId" />
+          </Key>
+          <Property Name="BookingPaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentAmount" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PaymentAcceptedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PaymentType" Relationship="DB_132062_workbyclockModel.FK_BookingPayments_PaymentTypes" FromRole="BookingPayment" ToRole="PaymentType" />
+          <NavigationProperty Name="RoomBooking" Relationship="DB_132062_workbyclockModel.FK_BookingPayments_RoomBookings" FromRole="BookingPayment" ToRole="RoomBooking" />
+        </EntityType>
+        <EntityType Name="BookingType">
+          <Key>
+            <PropertyRef Name="BookingTypeId" />
+          </Key>
+          <Property Name="BookingTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingTypeName" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="BookingTypeDesc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="IsTaxable" Type="Boolean" Nullable="false" />
+          <Property Name="TaxInfoId" Type="Int32" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="DB_132062_workbyclockModel.FK_BookingTypes_Company" FromRole="BookingType" ToRole="Company" />
+          <NavigationProperty Name="Location" Relationship="DB_132062_workbyclockModel.FK_BookingTypes_Location" FromRole="BookingType" ToRole="Location" />
+          <NavigationProperty Name="TaxInfo" Relationship="DB_132062_workbyclockModel.FK_BookingTypes_TaxInfo" FromRole="BookingType" ToRole="TaxInfo" />
+          <NavigationProperty Name="RoomBookings" Relationship="DB_132062_workbyclockModel.FK_RoomBookings_BookingTypes" FromRole="BookingType" ToRole="RoomBooking" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeId" />
+          </Key>
+          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentTypeName" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentTypeDesc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BookingPayments" Relationship="DB_132062_workbyclockModel.FK_BookingPayments_PaymentTypes" FromRole="PaymentType" ToRole="BookingPayment" />
+        </EntityType>
+        <EntityType Name="RoomBooking">
+          <Key>
+            <PropertyRef Name="RoomBookingId" />
+          </Key>
+          <Property Name="RoomBookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomId" Type="Int32" Nullable="false" />
+          <Property Name="GuestId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="FromDate" Type="DateTime" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Precision="0" />
+          <Property Name="BookingTypeId" Type="Int32" Nullable="false" />
+          <Property Name="BookingDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BookingType" Relationship="DB_132062_workbyclockModel.FK_RoomBookings_BookingTypes" FromRole="RoomBooking" ToRole="BookingType" />
+          <NavigationProperty Name="Company" Relationship="DB_132062_workbyclockModel.FK_RoomBookings_Company" FromRole="RoomBooking" ToRole="Company" />
+          <NavigationProperty Name="Location" Relationship="DB_132062_workbyclockModel.FK_RoomBookings_Location" FromRole="RoomBooking" ToRole="Location" />
+          <NavigationProperty Name="Room" Relationship="DB_132062_workbyclockModel.FK_RoomBookings_Rooms" FromRole="RoomBooking" ToRole="Room" />
+          <NavigationProperty Name="Guest" Relationship="DB_132062_workbyclockModel.FK_RoomBookings_Guests" FromRole="RoomBooking" ToRole="Guest" />
+          <Property Name="RoomBookingStatusId" Type="Int32" />
+          <NavigationProperty Name="RoomBookingStatusMaster" Relationship="DB_132062_workbyclockModel.FK_RoomBookings_RoomBookingStatusMaster" FromRole="RoomBooking" ToRole="RoomBookingStatusMaster" />
+          <NavigationProperty Name="BookingPayments" Relationship="DB_132062_workbyclockModel.FK_BookingPayments_RoomBookings" FromRole="RoomBooking" ToRole="BookingPayment" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomName" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="RoomDesc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="RoomBeds" Type="Int32" Nullable="false" />
+          <Property Name="RoomStatusId" Type="Int32" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="Locationid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="DB_132062_workbyclockModel.FK_Rooms_Company" FromRole="Room" ToRole="Company" />
+          <NavigationProperty Name="Location" Relationship="DB_132062_workbyclockModel.FK_Rooms_Location" FromRole="Room" ToRole="Location" />
+          <NavigationProperty Name="RoomBookings" Relationship="DB_132062_workbyclockModel.FK_RoomBookings_Rooms" FromRole="Room" ToRole="RoomBooking" />
+          <NavigationProperty Name="RoomStatusMaster" Relationship="DB_132062_workbyclockModel.FK_Rooms_RoomStatusMaster" FromRole="Room" ToRole="RoomStatusMaster" />
+          <Property Name="RoomPrice" Type="Decimal" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="RoomStatusMaster">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="StatusDesc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rooms" Relationship="DB_132062_workbyclockModel.FK_Rooms_RoomStatusMaster" FromRole="RoomStatusMaster" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="TaxInfo">
+          <Key>
+            <PropertyRef Name="TaxInfoId" />
+          </Key>
+          <Property Name="TaxInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxInfoName" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="TaxAmount" Type="Decimal" Nullable="false" Precision="10" Scale="0" />
+          <Property Name="IsPercentage" Type="Boolean" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="LocatioId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BookingTypes" Relationship="DB_132062_workbyclockModel.FK_BookingTypes_TaxInfo" FromRole="TaxInfo" ToRole="BookingType" />
+          <NavigationProperty Name="Company" Relationship="DB_132062_workbyclockModel.FK_TaxInfo_Company" FromRole="TaxInfo" ToRole="Company" />
+          <NavigationProperty Name="Location" Relationship="DB_132062_workbyclockModel.FK_TaxInfo_Location" FromRole="TaxInfo" ToRole="Location" />
+        </EntityType>
+        <Association Name="FK_BookingTypes_Company">
+          <End Type="DB_132062_workbyclockModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.BookingType" Role="BookingType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="BookingType">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTypes_Location">
+          <End Type="DB_132062_workbyclockModel.Location" Role="Location" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.BookingType" Role="BookingType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="BookingType">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingTypes_TaxInfo">
+          <End Type="DB_132062_workbyclockModel.TaxInfo" Role="TaxInfo" Multiplicity="0..1" />
+          <End Type="DB_132062_workbyclockModel.BookingType" Role="BookingType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxInfo">
+              <PropertyRef Name="TaxInfoId" />
+            </Principal>
+            <Dependent Role="BookingType">
+              <PropertyRef Name="TaxInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomBookings_BookingTypes">
+          <End Type="DB_132062_workbyclockModel.BookingType" Role="BookingType" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.RoomBooking" Role="RoomBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookingType">
+              <PropertyRef Name="BookingTypeId" />
+            </Principal>
+            <Dependent Role="RoomBooking">
+              <PropertyRef Name="BookingTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomBookings_Company">
+          <End Type="DB_132062_workbyclockModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.RoomBooking" Role="RoomBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="RoomBooking">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_Company">
+          <End Type="DB_132062_workbyclockModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.Room" Role="Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaxInfo_Company">
+          <End Type="DB_132062_workbyclockModel.Company" Role="Company" Multiplicity="0..1" />
+          <End Type="DB_132062_workbyclockModel.TaxInfo" Role="TaxInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="TaxInfo">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomBookings_Location">
+          <End Type="DB_132062_workbyclockModel.Location" Role="Location" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.RoomBooking" Role="RoomBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="RoomBooking">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_Location">
+          <End Type="DB_132062_workbyclockModel.Location" Role="Location" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.Room" Role="Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="Locationid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaxInfo_Location">
+          <End Type="DB_132062_workbyclockModel.Location" Role="Location" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.TaxInfo" Role="TaxInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationId" />
+            </Principal>
+            <Dependent Role="TaxInfo">
+              <PropertyRef Name="LocatioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomBookings_Rooms">
+          <End Type="DB_132062_workbyclockModel.Room" Role="Room" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.RoomBooking" Role="RoomBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="RoomBooking">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_RoomStatusMaster">
+          <End Type="DB_132062_workbyclockModel.RoomStatusMaster" Role="RoomStatusMaster" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.Room" Role="Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomStatusMaster">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="RoomStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="GuestId" />
+          </Key>
+          <Property Name="GuestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuestFullName" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="GuestPhone" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="GuestEmail" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="IsDNR" Type="Boolean" Nullable="false" />
+          <Property Name="GuestAddress" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="GuestDriverLicenseId" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyId" Type="Int32" />
+          <NavigationProperty Name="Company" Relationship="DB_132062_workbyclockModel.FK_Guests_Company" FromRole="Guest" ToRole="Company" />
+          <NavigationProperty Name="RoomBookings" Relationship="DB_132062_workbyclockModel.FK_RoomBookings_Guests" FromRole="Guest" ToRole="RoomBooking" />
+        </EntityType>
+        <Association Name="FK_Guests_Company">
+          <End Type="DB_132062_workbyclockModel.Company" Role="Company" Multiplicity="0..1" />
+          <End Type="DB_132062_workbyclockModel.Guest" Role="Guest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="Guest">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomBookings_Guests">
+          <End Type="DB_132062_workbyclockModel.Guest" Role="Guest" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.RoomBooking" Role="RoomBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guest">
+              <PropertyRef Name="GuestId" />
+            </Principal>
+            <Dependent Role="RoomBooking">
+              <PropertyRef Name="GuestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RoomBookingStatusMaster">
+          <Key>
+            <PropertyRef Name="RoomBookingStatusId" />
+          </Key>
+          <Property Name="RoomBookingStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomBookingStatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoomBookingStatusDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoomBookings" Relationship="DB_132062_workbyclockModel.FK_RoomBookings_RoomBookingStatusMaster" FromRole="RoomBookingStatusMaster" ToRole="RoomBooking" />
+        </EntityType>
+        <Association Name="FK_RoomBookings_RoomBookingStatusMaster">
+          <End Type="DB_132062_workbyclockModel.RoomBookingStatusMaster" Role="RoomBookingStatusMaster" Multiplicity="0..1" />
+          <End Type="DB_132062_workbyclockModel.RoomBooking" Role="RoomBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomBookingStatusMaster">
+              <PropertyRef Name="RoomBookingStatusId" />
+            </Principal>
+            <Dependent Role="RoomBooking">
+              <PropertyRef Name="RoomBookingStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingPayments_PaymentTypes">
+          <End Type="DB_132062_workbyclockModel.PaymentType" Role="PaymentType" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.BookingPayment" Role="BookingPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeId" />
+            </Principal>
+            <Dependent Role="BookingPayment">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingPayments_RoomBookings">
+          <End Type="DB_132062_workbyclockModel.RoomBooking" Role="RoomBooking" Multiplicity="1" />
+          <End Type="DB_132062_workbyclockModel.BookingPayment" Role="BookingPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomBooking">
+              <PropertyRef Name="RoomBookingId" />
+            </Principal>
+            <Dependent Role="BookingPayment">
+              <PropertyRef Name="BookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_132062_workbyclockModelStoreContainer" CdmEntityContainer="DB_132062_workbyclockEntities1">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyDescription" ColumnName="CompanyDescription" />
+                <ScalarProperty Name="CompanyPhone" ColumnName="CompanyPhone" />
+                <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+                <ScalarProperty Name="CompanyWebsite" ColumnName="CompanyWebsite" />
+                <ScalarProperty Name="CompanyAddress1" ColumnName="CompanyAddress1" />
+                <ScalarProperty Name="CompanyAddress2" ColumnName="CompanyAddress2" />
+                <ScalarProperty Name="CompanyCity" ColumnName="CompanyCity" />
+                <ScalarProperty Name="CompanyState" ColumnName="CompanyState" />
+                <ScalarProperty Name="CompanyZip" ColumnName="CompanyZip" />
+                <ScalarProperty Name="CompanyCountry" ColumnName="CompanyCountry" />
+                <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+                <ScalarProperty Name="CompanyAdminId" ColumnName="CompanyAdminId" />
+                <ScalarProperty Name="CompanyNumberOfUsers" ColumnName="CompanyNumberOfUsers" />
+                <ScalarProperty Name="CompanyNumberOfLocation" ColumnName="CompanyNumberOfLocation" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyLocations">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.CompanyLocation">
+              <MappingFragment StoreEntitySet="CompanyLocation">
+                <ScalarProperty Name="CompanyLocationId" ColumnName="CompanyLocationId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyUsers">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.CompanyUser">
+              <MappingFragment StoreEntitySet="CompanyUser">
+                <ScalarProperty Name="CompanyUserId" ColumnName="CompanyUserId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="EmployeePin" ColumnName="EmployeePin" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
+                <ScalarProperty Name="EmployeePhone" ColumnName="EmployeePhone" />
+                <ScalarProperty Name="EmployeeLastFour" ColumnName="EmployeeLastFour" />
+                <ScalarProperty Name="EmployeeEmploymentTypeId" ColumnName="EmployeeEmploymentTypeId" />
+                <ScalarProperty Name="EmployeeIsHourly" ColumnName="EmployeeIsHourly" />
+                <ScalarProperty Name="EmployeeRate" ColumnName="EmployeeRate" />
+                <ScalarProperty Name="EmployeeBirthDate" ColumnName="EmployeeBirthDate" />
+                <ScalarProperty Name="EmployeeHireDate" ColumnName="EmployeeHireDate" />
+                <ScalarProperty Name="EmployeeLeftDate" ColumnName="EmployeeLeftDate" />
+                <ScalarProperty Name="EmployeeAddress1" ColumnName="EmployeeAddress1" />
+                <ScalarProperty Name="EmployeeAddress2" ColumnName="EmployeeAddress2" />
+                <ScalarProperty Name="EmployeeCity" ColumnName="EmployeeCity" />
+                <ScalarProperty Name="EmployeeState" ColumnName="EmployeeState" />
+                <ScalarProperty Name="EmployeeZip" ColumnName="EmployeeZip" />
+                <ScalarProperty Name="EmployeeCountry" ColumnName="EmployeeCountry" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeLocations">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.EmployeeLocation">
+              <MappingFragment StoreEntitySet="EmployeeLocation">
+                <ScalarProperty Name="EmployeeLocationId" ColumnName="EmployeeLocationId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTimeCards">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.EmployeeTimeCard">
+              <MappingFragment StoreEntitySet="EmployeeTimeCard">
+                <ScalarProperty Name="DeviceCodeOut" ColumnName="DeviceCodeOut" />
+                <ScalarProperty Name="TimeOutUtc" ColumnName="TimeOutUtc" />
+                <ScalarProperty Name="TimeInUtc" ColumnName="TimeInUtc" />
+                <ScalarProperty Name="DeviceCode" ColumnName="DeviceCode" />
+                <ScalarProperty Name="EmployeeTimeCardId" ColumnName="EmployeeTimeCardId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="LocationIp" ColumnName="LocationIp" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmploymentTypes">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.EmploymentType">
+              <MappingFragment StoreEntitySet="EmploymentType">
+                <ScalarProperty Name="EmploymentTypeId" ColumnName="EmploymentTypeId" />
+                <ScalarProperty Name="EmploymentTypeName" ColumnName="EmploymentTypeName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="LocationNumberOfDevice" ColumnName="LocationNumberOfDevice" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="LocationDescription" ColumnName="LocationDescription" />
+                <ScalarProperty Name="LocationPhone" ColumnName="LocationPhone" />
+                <ScalarProperty Name="LocationEmail" ColumnName="LocationEmail" />
+                <ScalarProperty Name="LocationAddress1" ColumnName="LocationAddress1" />
+                <ScalarProperty Name="LocationAddress2" ColumnName="LocationAddress2" />
+                <ScalarProperty Name="LocationCity" ColumnName="LocationCity" />
+                <ScalarProperty Name="LocationState" ColumnName="LocationState" />
+                <ScalarProperty Name="LocationZip" ColumnName="LocationZip" />
+                <ScalarProperty Name="LocationCountry" ColumnName="LocationCountry" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleDescription" ColumnName="RoleDescription" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="StateAbv" ColumnName="StateAbv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserAspNetId" ColumnName="UserAspNetId" />
+                <ScalarProperty Name="UserFullName" ColumnName="UserFullName" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+                <ScalarProperty Name="UserAddress1" ColumnName="UserAddress1" />
+                <ScalarProperty Name="UserAddress2" ColumnName="UserAddress2" />
+                <ScalarProperty Name="UserCity" ColumnName="UserCity" />
+                <ScalarProperty Name="UserState" ColumnName="UserState" />
+                <ScalarProperty Name="UserZip" ColumnName="UserZip" />
+                <ScalarProperty Name="UserCountry" ColumnName="UserCountry" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInRoles">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.UserInRole">
+              <MappingFragment StoreEntitySet="UserInRoles">
+                <ScalarProperty Name="UserInRoleId" ColumnName="UserInRoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="DB_132062_workbyclockModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Devices">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.Device">
+              <MappingFragment StoreEntitySet="Device">
+                <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DeviceDescription" ColumnName="DeviceDescription" />
+                <ScalarProperty Name="DeviceCode" ColumnName="DeviceCode" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTimeCardHistories">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.EmployeeTimeCardHistory">
+              <MappingFragment StoreEntitySet="EmployeeTimeCardHistory">
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="DeviceCodeOut" ColumnName="DeviceCodeOut" />
+                <ScalarProperty Name="TimeOutUtc" ColumnName="TimeOutUtc" />
+                <ScalarProperty Name="TimeInUtc" ColumnName="TimeInUtc" />
+                <ScalarProperty Name="DeviceCode" ColumnName="DeviceCode" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TimeCardCreateDate" ColumnName="TimeCardCreateDate" />
+                <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+                <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+                <ScalarProperty Name="LocationIp" ColumnName="LocationIp" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="EmployeeTimeCardId" ColumnName="EmployeeTimeCardId" />
+                <ScalarProperty Name="EmployeeTimeCardHistoryId" ColumnName="EmployeeTimeCardHistoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookingPayments">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.BookingPayment">
+              <MappingFragment StoreEntitySet="BookingPayments">
+                <ScalarProperty Name="PaymentAcceptedBy" ColumnName="PaymentAcceptedBy" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="BookingPaymentId" ColumnName="BookingPaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookingTypes">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.BookingType">
+              <MappingFragment StoreEntitySet="BookingTypes">
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="TaxInfoId" ColumnName="TaxInfoId" />
+                <ScalarProperty Name="IsTaxable" ColumnName="IsTaxable" />
+                <ScalarProperty Name="BookingTypeDesc" ColumnName="BookingTypeDesc" />
+                <ScalarProperty Name="BookingTypeName" ColumnName="BookingTypeName" />
+                <ScalarProperty Name="BookingTypeId" ColumnName="BookingTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.PaymentType">
+              <MappingFragment StoreEntitySet="PaymentTypes">
+                <ScalarProperty Name="PaymentTypeDesc" ColumnName="PaymentTypeDesc" />
+                <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomBookings">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.RoomBooking">
+              <MappingFragment StoreEntitySet="RoomBookings">
+                <ScalarProperty Name="RoomBookingStatusId" ColumnName="RoomBookingStatusId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="BookingTypeId" ColumnName="BookingTypeId" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="GuestId" ColumnName="GuestId" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="RoomBookingId" ColumnName="RoomBookingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.Room">
+              <MappingFragment StoreEntitySet="Rooms">
+                <ScalarProperty Name="RoomPrice" ColumnName="RoomPrice" />
+                <ScalarProperty Name="Locationid" ColumnName="Locationid" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="RoomStatusId" ColumnName="RoomStatusId" />
+                <ScalarProperty Name="RoomBeds" ColumnName="RoomBeds" />
+                <ScalarProperty Name="RoomDesc" ColumnName="RoomDesc" />
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomStatusMasters">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.RoomStatusMaster">
+              <MappingFragment StoreEntitySet="RoomStatusMaster">
+                <ScalarProperty Name="StatusDesc" ColumnName="StatusDesc" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxInfoes">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.TaxInfo">
+              <MappingFragment StoreEntitySet="TaxInfo">
+                <ScalarProperty Name="LocatioId" ColumnName="LocatioId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="IsPercentage" ColumnName="IsPercentage" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="TaxInfoName" ColumnName="TaxInfoName" />
+                <ScalarProperty Name="TaxInfoId" ColumnName="TaxInfoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guests">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.Guest">
+              <MappingFragment StoreEntitySet="Guests">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="GuestDriverLicenseId" ColumnName="GuestDriverLicenseId" />
+                <ScalarProperty Name="GuestAddress" ColumnName="GuestAddress" />
+                <ScalarProperty Name="IsDNR" ColumnName="IsDNR" />
+                <ScalarProperty Name="GuestEmail" ColumnName="GuestEmail" />
+                <ScalarProperty Name="GuestPhone" ColumnName="GuestPhone" />
+                <ScalarProperty Name="GuestFullName" ColumnName="GuestFullName" />
+                <ScalarProperty Name="GuestId" ColumnName="GuestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomBookingStatusMasters">
+            <EntityTypeMapping TypeName="DB_132062_workbyclockModel.RoomBookingStatusMaster">
+              <MappingFragment StoreEntitySet="RoomBookingStatusMaster">
+                <ScalarProperty Name="RoomBookingStatusDesc" ColumnName="RoomBookingStatusDesc" />
+                <ScalarProperty Name="RoomBookingStatusName" ColumnName="RoomBookingStatusName" />
+                <ScalarProperty Name="RoomBookingStatusId" ColumnName="RoomBookingStatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

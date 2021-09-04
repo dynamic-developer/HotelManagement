@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="resources/css/default.css">
+<link rel="stylesheet" type="text/css" href="resources/css/index.css">
+
+<link href="vendors/fullcalendar/fullcalendar.css" rel="stylesheet">
+<link href="vendors/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print">
+
+<script src="vendors/fullcalendar/lib/moment.min.js"></script>
+<script src="vendors/fullcalendar/lib/jquery.min.js"></script>
+<script src="vendors/fullcalendar/lib/jquery-ui.custom.min.js"></script>
+<script src="vendors/fullcalendar/fullcalendar.min.js"></script>
+<script>
+
+	$(document).ready(function() {
+
+
+		/* initialize the external events
+		-----------------------------------------------------------------*/
+
+		$('#external-events .fc-event').each(function() {
+
+			// store data so the calendar knows to render an event upon drop
+			$(this).data('event', {
+				title: $.trim($(this).text()), // use the element's text as the event title
+				stick: true // maintain when user navigates (see docs on the renderEvent method)
+			});
+
+			// make the event draggable using jQuery UI
+			$(this).draggable({
+				zIndex: 999,
+				revert: true,      // will cause the event to go back to its
+				revertDuration: 0  //  original position after the drag
+			});
+		});
+
+		/* initialize the calendar
+		-----------------------------------------------------------------*/
+
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,'
+			},
+			editable: true,
+			droppable: true, // this allows things to be dropped onto the calendar
+			drop: function() {
+				$(this).remove();
+			}
+		});
+	});
+
+</script>
+</head>
+
+<body>
+	<div id='wrap'>
+
+		<div id='external-events'>
+			<h4>Events</h4>
+			<div class='fc-event'>Purchae Contract</div>
+			<div class='fc-event'>Application</div>
+			<div class='fc-event'>Submitted</div>
+			<div class='fc-event'>Initial Disclosures</div>
+			<div class='fc-event'>Approved</div>
+			<div class='fc-event'>Locked</div>
+			<div class='fc-event'>Appraisal Signed Off</div>
+			<div class='fc-event'>CD Tech Assiged</div>
+			<div class='fc-event'>Collaboration Started</div>
+			<div class='fc-event'>Locked Disclosures</div>
+			<div class='fc-event'>Final PTCDs Submitted</div>
+			<div class='fc-event'>Final PTDs Submitted</div>
+			<div class='fc-event'>CD Signed</div>
+			<div class='fc-event'>Docs Out</div>
+			<div class='fc-event'>Docs Signed</div>
+			<div class='fc-event'>Docs Back</div>
+			<div class='fc-event'>Funding List</div>
+			<div class='fc-event'>Closing</div>
+		</div>
+
+		<div id='calendar'></div>
+
+		<div style='clear:both'></div>
+
+	</div>
+</body>
+</html>

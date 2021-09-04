@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workbyclock", "Workbyclock\Workbyclock.csproj", "{27F77F0C-BC0D-424D-A7A6-70F816DD9146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workbyclocklib", "Workbyclocklib\Workbyclocklib.csproj", "{A1610608-CA35-48CD-A51E-E4A6C3A2B716}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27F77F0C-BC0D-424D-A7A6-70F816DD9146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F77F0C-BC0D-424D-A7A6-70F816DD9146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F77F0C-BC0D-424D-A7A6-70F816DD9146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F77F0C-BC0D-424D-A7A6-70F816DD9146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1610608-CA35-48CD-A51E-E4A6C3A2B716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1610608-CA35-48CD-A51E-E4A6C3A2B716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1610608-CA35-48CD-A51E-E4A6C3A2B716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1610608-CA35-48CD-A51E-E4A6C3A2B716}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
